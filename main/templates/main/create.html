@@ -1,0 +1,14 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+	<form  method = 'POST'>
+		{% csrf_token %}
+		<input type = 'text' name = 'website' placeholder="Website/App">
+		<input type = 'text' name = 'logindetail' placeholder="Username/Email">
+		<input type = 'password' name = 'password' placeholder="Password">
+		<input type = 'submit'>
+
+
+	</form>
+
+{% endblock %}

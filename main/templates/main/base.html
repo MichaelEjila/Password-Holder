@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head> 
+		<title>Password Vault</title>
+	</head>
+
+	<body>
+		{%  block content %}
+		{% if user.is_authenticated %}
+
+			<h1>Welcome, {{ user.get_username }}</h1>
+
+		{% else %}
+
+			<h1>Don't forget your passwords again</h1>
+
+		{% endif %}
+
+
+		<div>
+			
+			{% if user.is_authenticated %}
+
+				<li><a href = '/' >Home</a></li>
+				<li><a href = 'create/' >Add Account Details</a></li>
+				<li><a href = 'view/' >View Saved Accounts</a></li>
+				<li><a href = 'logout/' >Logout</a></li>
+
+			{% else %}
+
+				<li><a href = '/' >Home</a></li>
+				<li><a href = 'register/' >Register</a></li>
+				<li><a href = 'login/' >Login</a></li>
+
+			{% endif %}
+		</div>
+		{% endblock %}
+
+	</body>
+
+</html>

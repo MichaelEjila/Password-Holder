@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+	<ul>
+		{% for detail in user_name.details_set.all %}
+
+			<li>{{detail.website}}</li>
+			<li>{{detail.logindetail}}</li>
+			<li>{{detail.password}}</li>
+			
+		{% endfor %}
+		<p>bloop</p>
+
+	</ul>
+		<a href="http://127.0.0.1:8000/create/">Add New Login Details</a>
+
+{% endblock %}
