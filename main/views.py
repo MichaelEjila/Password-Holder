@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from django.contrib.auth.models import User, auth
 from .models import UserData, AccountDetails
 
@@ -16,14 +17,14 @@ def create(request):
 
 
 		user_name = UserData.objects.get(name= user)
-		account = AccountDetails(user=user_name, website=website, logindetail=logindetail, password=password)
+		account = AccountDetails(user=user_name, username=user, website=website, logindetail=logindetail, password=password)
 		account.save();
-		return render('view/')
+		return HttpResponseRedirect(reverse('view'))
 	return render(request, 'main/create.html', {})
 
 def view(response):
 	user = User.objects.get(username=response.user.username)
 
-	user_name = UserData.objects.get(name = user)
-	details = AccountDetails.objects.all()
-	return render(response, 'main/view.html', {"user_name":user_name, "details":details})
+	user_data = UserData.objects.get(name = user)
+	details = AccountDetails.objects.filter(username=user_data)
+	return render(response, 'main/view.html', {"user_data":user_data, "details":details})

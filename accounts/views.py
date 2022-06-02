@@ -20,7 +20,7 @@ def register(request):
 
 			user = User.objects.create_user(username=username, password=pwd2)
 			user.save();
-			new = UserData(name=username)
+			new = UserData(name=username, slug = username)
 			new.save();
 			return redirect('/login')
 		else:

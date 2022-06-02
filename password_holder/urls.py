@@ -20,5 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('', include('accounts.urls')),
-    path('', include('main.api.urls')),
+    path('', include('main.api.urls')), 
+
+     #REST FRAMEWORK URLS
+    path('api/main/', include('main.api.urls')  ),
 ]

@@ -3,10 +3,19 @@
 {% block content %}
 	<form  method = 'POST'>
 		{% csrf_token %}
-		<input type = 'text' name = 'website' placeholder="Website/App">
-		<input type = 'text' name = 'logindetail' placeholder="Username/Email">
-		<input type = 'password' name = 'password' placeholder="Password">
-		<input type = 'submit'>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Website</label>
+			<input type = 'text' name = 'website' placeholder="Website/App">
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Login Info</label>
+			<input type = 'text' name = 'logindetail' placeholder="Username/Email">
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Password</label>
+			<input type = 'password' name = 'password' placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
 
 
 	</form>
