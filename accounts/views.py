@@ -4,6 +4,10 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from main.models import UserData
 
+#Email imports
+from django.conf import settings
+from django.core.mail import send_mail
+
 # Create your views here.
 def register(request):
 	if request.method == "POST":

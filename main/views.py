@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User, auth
 from .models import UserData, AccountDetails
 
+from rest_framework.authtoken.models import Token
+
 # Create your views here
 def index(request):
 	return render(request, 'main/base.html', {})
@@ -28,3 +30,8 @@ def view(response):
 	user_data = UserData.objects.get(name = user)
 	details = AccountDetails.objects.filter(username=user_data)
 	return render(response, 'main/view.html', {"user_data":user_data, "details":details})
+
+def apitoken(request):
+	user = User.objects.get(username=request.user.username)
+	token = Token.objects.get(user=user)
+	return render(request, 'main/apitoken.html', {"token":token})
