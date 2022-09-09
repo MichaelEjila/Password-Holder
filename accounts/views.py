@@ -4,9 +4,6 @@ from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from main.models import UserData
 
-#Email imports
-from django.conf import settings
-from django.core.mail import send_mail
 
 # Create your views here.
 def register(request):
@@ -21,11 +18,11 @@ def register(request):
 				messages.info(request, 'Username taken')
 				return redirect('/register')
 
-
 			user = User.objects.create_user(username=username, password=pwd2)
 			user.save();
 			new = UserData(name=username, slug = username)
 			new.save();
+			
 			return redirect('/login')
 		else:
 			messages.info(request, 'Password does not match')
